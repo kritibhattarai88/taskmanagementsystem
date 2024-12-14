@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  Completed tasks
+{% endblock title %}
+
+{% block content %}
+<!-- assigned completed task -->
+
+<div class="container-fluid w-60">
+    <div class="row">
+        <div class="col-10 mx-auto">
+            <h1 class="text-center text-light fw-bolder"> Assigned Completed tasks</h1>
+            
+            <table class="table table-success table-striped ">
+                <thead>
+                    <tr>
+                        <th class="col">S.N.</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Task Title</th>
+                        <th scope="col">Task Description</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Assign To</th>
+                        <th scope="col">Due Date</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if data1 %}                 
+                    {% for i in data1 %}                   
+                    <tr>
+                        <th>{{forloop.counter}}</th>
+                        <th scope="row">{{i.id}}</th>
+                        <td>{{i.title}}</td>
+                        <td>{{i.description}}</td>
+                        <td>{{i.status}}</td>
+                        <td>{{i.user}}</td>
+                        <td>{{i.due_date}}</td>
+                        <td>
+                            <!-- modal for complete starts -->
+                            <button class="btn btn-outline-danger" data-bs-toggle="modal"
+                                data-bs-target="#modals-{{i.id}}" data-bs-title="Mark as Complete"
+                                data-bs-placement="top">
+                                <i class="fa-solid fa-recycle"></i> Delete all
+                            </button>                           
+                        </td>     
+                        <!-- Modal -->
+                        <div class="modal fade" id="modals-{{i.id}}" tabindex="-1"
+                            aria-labelledby="modalLabels-{{i.id}}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="modalLabels-{{i.id}}">Completed data</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to delete all data?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-danger"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <a href="{% url 'delete_assign' i.id %}"><button type="button"
+                                                class="btn btn-outline-success">Delete All</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  modal for complete ends -->
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td colspan="8" class="text-center bg-secondary text-white">No tasks available.</td>
+                    </tr>
+                    {% endif %}                                  
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- assigned task completed section ends -->
+
+<!-- current tasks completed section starts -->
+<div class="container-fluid w-60">
+    <div class="row">
+        <div class="col-10 mx-auto">
+            <h1 class="text-center text-light fw-bolder"> Current Completed tasks</h1>
+            
+            <table class="table table-success table-striped ">
+                <thead>
+                    <tr>
+                        <th class="col">S.N.</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Task Title</th>
+                        <th scope="col">Task Description</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Start Date</th>
+                        <th scope="col">End Date</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if data2 %}                 
+                    {% for i in data2 %}                   
+                    <tr>
+                        <th>{{forloop.counter}}</th>
+                        <th scope="row">{{i.id}}</th>
+                        <td>{{i.title}}</td>
+                        <td>{{i.description}}</td>
+                        <td>{{i.status}}</td>
+                        <td>{{i.start_date}}</td>
+                        <td>{{i.end_date}}</td>
+                        <td>
+                            <!-- modal for complete starts -->
+                            <button class="btn btn-outline-danger" data-bs-toggle="modal"
+                                data-bs-target="#modals-{{i.id}}" data-bs-title="Mark as Complete"
+                                data-bs-placement="top">
+                                <i class="fa-solid fa-recycle"></i> Delete all
+                            </button>                           
+                        </td>     
+                        <!-- Modal -->
+                        <div class="modal fade" id="modals-{{i.id}}" tabindex="-1"
+                            aria-labelledby="modalLabels-{{i.id}}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="modalLabels-{{i.id}}">Completed data</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to delete all data?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-danger"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <a href="{% url 'delete_current' i.id %}"><button type="button"
+                                                class="btn btn-outline-danger">Delete All</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  modal for complete ends -->
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td colspan="8" class="text-center bg-secondary text-white">No tasks available.</td>
+                    </tr>
+                    {% endif %}                                  
+                </tbody>
+            </table>
+        </div>
+
+{% endblock content %}

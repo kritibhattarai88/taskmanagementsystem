@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+   Assign task
+{% endblock title %}
+{% block content %}
+
+<div class="main">
+    <div class="container w-50">
+        <div class="heading">Assign a task</div>
+        <form action="{% url 'assign_task' %}" method="POST" class="form">
+            {% csrf_token %}
+            <div class="form-floating">
+                <input type="text" name="title" class="form-control" placeholder="Enter task title" id="taskTitle">
+                <label for="taskTitle">Task Title</label>
+            </div>
+            <div class="form-floating mt-3">
+                  <textarea name="description" class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                  <label for="floatingTextarea">Task Description</label>
+            </div>
+            <div class="form-floating mt-3">
+                <select id="status" name="status" class="form-control">
+                    <option value=""selected>Select Status</option>
+                    <option value="not_started">Not Started</option>
+                    <option value="in_progress">In Progress</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="exampleInputPassword1" class="form-label">Assign to</label>
+                <input placeholder="Enter the username" type="text" name="user" class="form-control" id="assign">
+            </div>
+            
+            <div class="mb-3 mt-3">
+                <label for="exampleInputPassword1" class="form-label">Due Date</label>
+                <input type="date" name="due_date" class="form-control" id="endDate">
+            </div>
+            <button type="submit" class="btn btn-primary rounded-pill">ASSIGN</button>
+          
+        </form>
+</div>
+   
+{% endblock content %}

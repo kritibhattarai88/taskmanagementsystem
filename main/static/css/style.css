@@ -1,0 +1,161 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styles */
+.header {
+    background-color: #343a40;
+    padding: 20px;
+    color: white;
+   
+   
+}
+
+
+.header .name {
+    font-size: 24px;
+    color: #f4f4f9;
+    text-transform: uppercase;
+    font-weight: bold;
+    
+}
+
+
+/* Sidebar Styles */
+.navbar {
+    background-color: #2c3e50;
+    min-height: 100vh;
+    padding-top: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 250px;
+    transition: 0.3s;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    background-color: #1abc9c;
+}
+
+.navbar i {
+    margin-right: 10px;
+}
+
+/* Dropdown Styles */
+.dropdown-toggle {
+    background-color: #343a40;
+    color: white;
+    border: none;
+}
+
+.dropdown-menu {
+    top: 100%;
+    background-color: #2c3e50;
+}
+
+.dropdown-item {
+    color: white;
+}
+
+.dropdown-item:hover {
+    background-color: #1abc9c;
+}
+
+/* Content Area Styles */
+.content {
+    padding: 10px;
+    background-color: #6d6d9a;
+    min-height: 100vh;
+}
+
+.content h1 {
+    font-size: 36px;
+    color: #333;
+}
+
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 20px; 
+}
+
+/* Task Boxes Styles */
+.boxes {
+    flex: 1;
+    width: 30%; 
+    background-color: #e86666;
+    border-radius: 12px; 
+    text-align: center;
+    margin-bottom: 30px; 
+    padding: 20px; 
+}
+
+.boxes h2 {
+    font-size: 28px; 
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.boxes p {
+    font-size: 36px; 
+    color: #1abc9c;
+    font-weight: bold;
+}
+
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px; 
+}
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        min-height: 60px;
+    }
+
+    .content {
+        margin-left: 0;
+        padding-top: 60px;
+    }
+
+    .boxes {
+        width: 45%; /* Adjust width for medium screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .header .name {
+        font-size: 18px;
+    }
+
+    .navbar {
+        width: 100%;
+    }
+
+    .boxes {
+        width: 100%; 
+        padding: 15px; 
+    }
+}

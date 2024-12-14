@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  Assigned tasks
+{% endblock title %}
+
+{% block content %}
+<form method="get" class="d-flex justify-content-end mt-2" role="search" action="{% url 'index' %}">
+    <input style="width: 200px; height: 30px;" class="form-control form-control-sm me-2" name="search" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-warning btn-success btn-sm" type="submit">Search</button>
+</form>
+<div class="container-fluid w-60">
+    <div class="row">
+        <div class="col-10 mx-auto">
+            <h1 class="text-center text-light fw-bolder">Assigned tasks</h1>
+            
+            <table class="table table-success table-striped ">
+                <thead>
+                    <tr>
+                        <th class="col">S.N.</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Task Title</th>
+                        <th scope="col">Task Description</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Assign To</th>
+                        <th scope="col">Due Date</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if data %}                 
+                    {% for i in data %}                   
+                    <tr>
+                        <th>{{forloop.counter}}</th>
+                        <th scope="row">{{i.id}}</th>
+                        <td>{{i.title}}</td>
+                        <td>{{i.description}}</td>
+                        <td>{{i.status}}</td>
+                        <td>{{i.assign_to}}</td>
+                        <td>{{i.due_date}}</td>
+                        <td>
+                            <button class="btn btn-outline-success" data-bs-toggle="modal"
+                                data-bs-target="#modals-{{i.id}}" data-bs-title="Mark as Complete"
+                                data-bs-placement="top">
+                                <i class="fa-solid fa-circle-check"></i> Mark as completed
+                            </button>
+                            
+                        </td>     
+                        <!-- Modal -->
+                        <div class="modal fade" id="modals-{{i.id}}" tabindex="-1"
+                            aria-labelledby="modalLabels-{{i.id}}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="modalLabels-{{i.id}}">Completed data</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure u want to mark this task as completed?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-danger"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <a href="{% url 'completed' i.id %}"><button type="button"
+                                                class="btn btn-outline-success"><i class="fa-solid fa-circle-check"></i> Mark as completed</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- recycle modal ends -->
+
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td colspan="8" class="text-center bg-secondary text-white">No tasks available.</td>
+                    </tr>
+                    {% endif %}               
+                    
+                </tbody>
+
+            </table>
+            
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

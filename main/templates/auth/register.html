@@ -18,26 +18,12 @@
     <!-- cdnjs link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'css/auth.css' %}">
-    <style>
-        .xmark {
-            position: absolute;
-            right: 909px;
-            top: 6px;
-        }
-
-        .xmark a:hover {
-            color: red !important;
-
-        }
-
-        
-    </style>
+    
 </head>
 
 <body>
     <div class="main">
         <div class="container">
-            <h2 class="xmark"><a href="{% url 'index' %}"><i class="fa-solid fa-xmark"></i></a></h2>
             <form method="POST" action="{% url 'register' %}" class="form">
                 {% csrf_token %}
                 <div class="heading text-center fw-bold fs-4 text-primary">Register Now!</div>

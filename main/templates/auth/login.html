@@ -17,17 +17,7 @@
     <!-- cdnjs link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'css/auth.css' %}">
-    <style>
-        .xmark {
-            position: absolute;
-            right: 489px;
-            top: 14px;
-        }
-
-        .xmark a:hover {
-            color: red !important;
-        }
-            
+    <style> 
         .alertify-error {
         background-color: red !important;
         color: white !important;
@@ -45,7 +35,7 @@
 <body>
     <div class="main">
         <div class="container">
-            <h2 class="xmark"><a href="{% url 'index' %}"><i class="fa-solid fa-xmark"></i></a></h2>
+            
             <form class="form" method="POST" action="{% url 'log_in' %}">
                 {% csrf_token %}
                 <div class="heading text-center fw-bold fs-4 text-primary">Login Now!</div>
@@ -148,7 +138,7 @@
     {% if messages %}
     {% for message in messages %}
     <script>
-        alertify.set('notifier', 'position', 'bottom-right');
+        alertify.set('notifier', 'position', 'top-left');
         alertify.success('{{message}}');
     </script>
     

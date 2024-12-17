@@ -18,9 +18,9 @@ urlpatterns = [
 
     path("delete_current/<int:id>", delete_current, name="delete_current"),
     path("delete_assign/<int:id>", delete_assign, name="delete_assign"),
-    
     path("restore/<int:id>", restore, name="restore"),
     path("logout/", log_out, name="log_out"),
+    
     path("change_password/", change_password, name="change_password"),
     path('password_reset/', auth_views.PasswordResetView.as_view(template_name='auth/password_reset.html'), name='password_reset'),
     path('password_reset_done/', auth_views.PasswordResetDoneView.as_view(template_name='auth/password_reset_done.html'), name='password_reset_done'),
